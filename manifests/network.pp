@@ -24,25 +24,21 @@ class bsd::network (
 
   # Options common to both FreeBSD and OpenBSD
   if $v4forwarding {
-    sysctl { 'net.inet.ip.forwarding':
-      ensure => present,
+    sysctl::value { 'net.inet.ip.forwarding':
       value  => '1',
     }
   } else {
-    sysctl { 'net.inet.ip.forwarding':
-      ensure => present,
+    sysctl::value { 'net.inet.ip.forwarding':
       value  => '0',
     }
   }
 
   if $v6forwarding {
-    sysctl { 'net.inet6.ip6.forwarding':
-      ensure => present,
+    sysctl::value { 'net.inet6.ip6.forwarding':
       value  => '1',
     }
   } else {
-    sysctl { 'net.inet6.ip6.forwarding':
-      ensure => present,
+    sysctl::value { 'net.inet6.ip6.forwarding':
       value  => '0',
     }
   }
