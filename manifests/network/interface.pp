@@ -97,7 +97,7 @@ define bsd::network::interface (
       Shellvar {
         ensure => $file_ensure,
         target => '/etc/rc.conf',
-        notify => Bsd_interface[$if_name],
+#        notify => Bsd_interface[$if_name],
       }
 
       create_resources('shellvar', $rec_hash)
@@ -108,11 +108,11 @@ define bsd::network::interface (
         $action = 'stop'
       }
 
-      bsd_interface { $if_name:
-        ensure  => $ensure,
-        parents => $parents,
-        require => Shellvar["ifconfig_${if_name}"],
-      }
+#      bsd_interface { $if_name:
+#        ensure  => $ensure,
+#        parents => $parents,
+#        require => Shellvar["ifconfig_${if_name}"],
+#      }
     }
     default: {
       fail('unhandled BSD, please help add support')
